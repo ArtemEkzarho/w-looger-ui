@@ -1,8 +1,11 @@
-import getMe from './get-me';
+import CreateExerciseFab from './exercises/create-exercise/create-exercise-fab';
+import Exercises from './exercises/exercises';
 
 export default async function Home() {
-  const me = await getMe();
-
-  console.log(me);
-  return <></>;
+  return (
+    <>
+      <Exercises />
+      <CreateExerciseFab />
+    </>
+  );
 }

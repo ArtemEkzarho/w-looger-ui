@@ -148,6 +148,7 @@ export default function Header({ logout }: HeaderProps) {
 
 const Setting = ({ logout }: HeaderProps) => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const router = useRouter();
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -161,7 +162,7 @@ const Setting = ({ logout }: HeaderProps) => {
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Artem Ekzarkho" src="/static/images/avatar/2.jpg" />
+          <Avatar alt="Artem Ekzarkho" />
         </IconButton>
       </Tooltip>
       <Menu
@@ -180,6 +181,15 @@ const Setting = ({ logout }: HeaderProps) => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
+        <MenuItem
+          key="Settings"
+          onClick={async () => {
+            router.push('/settings');
+            handleCloseUserMenu();
+          }}
+        >
+          <Typography sx={{ textAlign: 'center' }}>Settings</Typography>
+        </MenuItem>
         <MenuItem
           key="Logout"
           onClick={async () => {
