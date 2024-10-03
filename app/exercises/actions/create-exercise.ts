@@ -6,10 +6,13 @@ import { API_URL } from '@/app/common/constants/api';
 
 export default async function createExercise(formData: FormData) {
   const response = await post('exercises', formData);
+
   const exerciseImage = formData.get('image');
+
   if (exerciseImage instanceof File && !response.error) {
     await uploadExerciseImage(response.data.id, exerciseImage);
   }
+
   revalidateTag('exercises');
 
   return response;

@@ -1,9 +1,10 @@
 import Grid from '@mui/material/Grid2';
 import getExercises from './actions/get-exercises';
 import Exercise from './exercise';
+import { Props } from '../page';
 
-export default async function Exercises() {
-  const exercises = await getExercises();
+export default async function Exercises({ searchParams }: Props) {
+  const exercises = await getExercises(searchParams);
 
   return (
     <Grid container spacing={3}>

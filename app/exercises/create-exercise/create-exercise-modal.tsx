@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { FormResponse } from '../../common/interfaces/form-response.interface';
-import { CSSProperties, useState } from 'react';
+import { useState } from 'react';
 import createExercise from '../actions/create-exercise';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { boxStyles, fileInputStyles } from './styles';
