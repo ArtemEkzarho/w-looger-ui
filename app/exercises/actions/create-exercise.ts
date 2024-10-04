@@ -1,6 +1,5 @@
 'use server';
 
-import { revalidateTag } from 'next/cache';
 import { getHeaders, post } from '../../common/utils/fetch';
 import { API_URL } from '@/app/common/constants/api';
 
@@ -12,8 +11,6 @@ export default async function createExercise(formData: FormData) {
   if (exerciseImage instanceof File && !response.error) {
     await uploadExerciseImage(response.data.id, exerciseImage);
   }
-
-  revalidateTag('exercises');
 
   return response;
 }

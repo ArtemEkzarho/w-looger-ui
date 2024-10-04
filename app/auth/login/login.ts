@@ -1,14 +1,17 @@
 'use server';
 
-import { FormError } from '@/app/common/interfaces/form-error.interface';
 import { API_URL } from '@/app/common/constants/api';
 import { jwtDecode } from 'jwt-decode';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getErrorMessage } from '@/app/common/utils/errors';
 import { AUTHENTICATION_COOKIE } from '../auth-cookie';
+import { FormResponse } from '@/app/common/interfaces/form-response.interface';
 
-export default async function login(_prevState: FormError, formData: FormData) {
+export default async function login(
+  _prevState: FormResponse,
+  formData: FormData,
+) {
   const res = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
